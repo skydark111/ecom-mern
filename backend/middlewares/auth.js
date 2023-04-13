@@ -11,7 +11,9 @@ exports.isAuthenticated = asyncErrorHandler(async (req, res, next) => {
     console.log('req cookie token is: ', req.cookies.token);
     const { token } = req.cookies;
     if (!token) {
-        return next(new Error('Login first to access the resource', 401))
+        console.log('don"t have access token')
+        res.status(401).json({ success: false, message: "Login first to access this route" });
+        // return next(new Error('Login first to access the resource', 401))
     }
 
     const decode = jwt.verify(token, process.env.JWT_SECRET)
