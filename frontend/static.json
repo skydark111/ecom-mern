@@ -5,7 +5,7 @@
             "headers": {
                 "Cache-Control": "no-store"
             },
-            "dest": "/index.html"
+            "dest": "/public/index.html"
         }
     ]
 }
