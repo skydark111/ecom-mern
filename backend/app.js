@@ -43,12 +43,16 @@ const payment = require('./routes/paymentRoutes')
 app.use('/api/v1', products, category, auth, user, admin, order, payment)
 
 if (process.env.NODE_ENV === 'PRODUCTION') {
+    console.log('i am in production: ', process.env.NODE_ENV)
     app.use(express.static(path.join(__dirname, '../frontend/build')))
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
     })
 }
+console.log('eeeeeeeeennv is : ', process.env.NODE_ENV)
+console.log('aaaaaaaaaaaaa:', path.join(__dirname, '../frontend/build'))
+console.log('bbbbbbbbbbbbbbbbbbb:', path.resolve(__dirname, '../frontend/build/index.html'))
 
 //handle errors
 app.use(errorMiddleware)
