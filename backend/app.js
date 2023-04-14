@@ -1,6 +1,6 @@
 const express = require('express')
 
-// const morgan = require('morgan');
+const morgan = require('morgan');
 
 const cookieParser = require('cookie-parser')
 
@@ -21,7 +21,7 @@ app.use(cors());
 // dotenv.config({ path: 'backend/config/config.env' })
 if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: './config/config.env' })
 
-// app.use(morgan('dev'));
+app.use(morgan('tiny'));
 
 app.use(express.json())
 
