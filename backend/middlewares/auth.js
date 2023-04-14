@@ -7,12 +7,11 @@ const asyncErrorHandler = require('./asyncErrorHandler')
 const ErrorHandler = require('../utils/Errors')
 
 exports.isAuthenticated = asyncErrorHandler(async (req, res, next) => {
-    console.log('req cookie is: ', req.cookies);
-    console.log('req cookie token is: ', req.cookies.token);
-    const { token } = req.cookies;
+    const { token } = req.headers;
     if (!token) {
         console.log('don"t have access token')
         res.status(401).json({ success: false, message: "Login first to access this route" });
+        return
         // return next(new Error('Login first to access the resource', 401))
     }
 

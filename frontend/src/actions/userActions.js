@@ -1,3 +1,4 @@
+// import axios from 'axios'
 import axios from './instance'
 
 import {
@@ -43,6 +44,8 @@ export const login = (email, password) => async dispatch => {
         }
 
         const { data } = await axios.post(`/api/v1/login`, { email, password }, config)
+        console.log('aaa data.token:', data.token)
+        localStorage.setItem('token', data.token)
 
         dispatch({ type: LOGIN_SUCCESS, payload: data.user })
 
@@ -182,6 +185,8 @@ export const resetPassword = (token, passwords) => async dispatch => {
 export const logout = () => async dispatch => {
     try {
         await axios.get('/api/v1/logout')
+
+        localStorage.removeItem('token')
 
         dispatch({ type: Logout_SUCCESS })
 
