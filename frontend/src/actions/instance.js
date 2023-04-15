@@ -10,8 +10,8 @@ if (localStorage.getItem('token')) {
 }
 
 const instance = axios.create({
-    // baseURL: 'https://mern-eocm-api.onrender.com',
-    baseURL: 'http://localhost:4000',
+    baseURL: 'https://mern-eocm-api.onrender.com',
+    // baseURL: 'http://localhost:4000',
     headers
 });
 
